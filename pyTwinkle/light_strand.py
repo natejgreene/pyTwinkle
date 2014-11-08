@@ -46,7 +46,7 @@ class LightStrand:
         strands = []
         for bdaddr in nearby_devices:
             if LIGHTS_NAME == bluetooth.lookup_name( bdaddr ):
-                strand = LightStrand(bdaddr[0], bdaddr[1])
+                strand = LightStrand(bdaddr,6)
                 strand.__connect()
                 strands.append(strand)
 
