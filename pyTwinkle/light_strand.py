@@ -22,9 +22,9 @@ class LightStrand:
         try:
             self.socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
             self.socket.connect((self.address, self.port))
-            connected = True
+            self.connected = True
         except:
-            connected = False
+            self.connected = False
 
     def send(self,command):
         try:
@@ -48,5 +48,6 @@ class LightStrand:
                 if strand.connected:
                     print "Connected to:", bdaddr
                     sys.stdout.flush()
+
 
         return strands
