@@ -9,7 +9,6 @@ class Broadcaster:
     def __init__(self, light_strands, command_queue):
         self.light_strands = light_strands
         self.command_queue = commend_queue
-        threading.Thread(target="broadcast").start()
 
     def start():
         threading.Thread(target="__broadcast").start()
