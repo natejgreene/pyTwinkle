@@ -9,6 +9,7 @@ class Server:
     client_socket = None
 
     command_queue = None
+    stop_thread = False
 
     def __init__(self, command_queue):
         self.command_queue = command_queue
@@ -31,15 +32,17 @@ class Server:
             sys.exit(1)
         threading.Thread(target=self.__run).start()
 
+    def stop(self):
+       stop_thread = True
+
     def __run(self):
-        while True:
+        print "Running"
+        sys.stdout.flush()
+        while not stop_thread:
             self.client_socket, address = self.server_socket.accept()
-            print "Running..."
             sys.stdout.flush()
             while True:
                 try:
-                    print "Put to queue."
-                    sys.stdout.flush()
                     self.command_queue.put(self.client_socket.recv(10))
                 except:
                     print "Server lost connection from client."
