@@ -1,9 +1,9 @@
 import bluetooth
 import sys
 
-class LightStrand:
+LIGHTS_NAME = "00651 36L RGB"
 
-    LIGHTS_NAME = "00651 36L RGB"
+class LightStrand:
 
     address = None
     port = None
