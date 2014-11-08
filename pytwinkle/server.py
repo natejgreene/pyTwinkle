@@ -27,7 +27,7 @@ class Server:
         except:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.exit(1)
-        threading.thread(target="__run").start()
+        threading.Thread(target=__run).start()
 
     def __run(self):
         while True:
