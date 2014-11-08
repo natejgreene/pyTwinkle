@@ -3,7 +3,7 @@ import light_strand
 import server
 import Queue
 
-command_queue = Queue()
+command_queue = Queue.Queue()
 strands = light_strand.connect_all_strands()
 
 #start the server
