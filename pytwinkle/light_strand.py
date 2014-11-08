@@ -7,7 +7,7 @@ class LightStrand:
     address = None
     port = None
     socket = None
-    connected = false
+    connected = False
 
     def __init__(self, address, port):
         self.address = address
@@ -17,9 +17,9 @@ class LightStrand:
         try:
             self.socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
             self.socket.connect((self.address, self.port))
-            connected = true
+            connected = True
         except:
-            connected = false
+            connected = False
 
     def send(self,command):
         try:
