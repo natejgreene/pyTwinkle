@@ -20,5 +20,4 @@ while True:
         time.sleep(1)
     except (KeyboardInterrupt, SystemExit):
         print "Exiting..."
-        server.stop()
-        broadcaster.stop()
+        break
