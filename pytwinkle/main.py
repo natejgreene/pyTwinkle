@@ -4,7 +4,7 @@ import server
 import Queue
 
 command_queue = Queue.Queue()
-strands = light_strand.connect_all_strands()
+strands = LightStrand.connect_all_strands()
 
 #start the server
 server = Server(command_queue)
