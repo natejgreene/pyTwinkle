@@ -41,7 +41,6 @@ class Server:
                     print "Server lost connection from client."
                     break
 
-    def bind
 
 
 
