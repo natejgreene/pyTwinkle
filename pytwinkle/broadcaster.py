@@ -18,7 +18,9 @@ class Broadcaster:
         if self.command_queue:
             while True:
                 print "Get from queue"
-                data = command_queue.get()
+                sys.stdout.flush()
+                data = self.command_queue.get()
                 print "Sending to strands."
+                sys.stdout.flush()
                 for strand in self.light_strands:
                   strand.send(data)

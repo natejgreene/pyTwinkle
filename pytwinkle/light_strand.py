@@ -31,6 +31,7 @@ class LightStrand:
                 self.socket.send(command)
         except:
             print "Error sending command to ", self.address
+            sys.stdout.flush()
             self.connected = false
 
     @staticmethod
@@ -45,5 +46,6 @@ class LightStrand:
                 strands.append(strand)
                 if strand.connected:
                     print "Connected to:", bdaddr
+                    sys.stdout.flush()
 
         return strands
