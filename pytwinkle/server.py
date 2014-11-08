@@ -9,7 +9,6 @@ class Server:
     client_socket = None
 
     command_queue = None
-    stop_thread = False
 
     def __init__(self, command_queue):
         self.command_queue = command_queue
@@ -31,19 +30,14 @@ class Server:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.stdout.flush()
             sys.exit(1)
-        t = threading.Thread(target=self.__run)
-        t.daemon = True
-        t.start()
-
-    def stop(self):
-       self.stop_thread = True
+        threading.Thread(target=self.__run, daemon=True).start()
 
     def __run(self):
-        print "Running"
+        print "Running..."
         sys.stdout.flush()
-        while not self.stop_thread:
+        while True:
             self.client_socket, address = self.server_socket.accept()
-            while not self.stop_thread and self.client_socket:
+            while True:
                 try:
                     self.command_queue.put(self.client_socket.recv(10))
                 except:
