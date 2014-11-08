@@ -1,8 +1,9 @@
 import Queue
 import threading
-import light_strand
+from light_strand import LightStrand
 
 class Broadcaster:
+
     light_strands = None
     command_queue = None
 

@@ -12,6 +12,12 @@ class Server:
     def __init__(self, command_queue):
         self.command_queue = command_queue
 
+    def __del__(self):
+        if self.server_socket:
+            self.server_socket.close()
+        if self.client_socket:
+            self.client_socket.close()
+
     def start(self):
         try:
             self.server_socket = bluetooth.BluetoothSocket( bluetooth.RFCOMM )
@@ -22,12 +28,6 @@ class Server:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.exit(1)
         threading.thread(target="__run").start()
-
-    def __del__(self):
-        if self.server_socket:
-            self.server_socket.close()
-        if self.client_socket:
-            self.client_socket.close()
 
     def __run(self):
         while True:

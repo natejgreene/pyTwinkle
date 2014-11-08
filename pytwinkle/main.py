@@ -1,6 +1,6 @@
-import broadcaster
-import light_strand
-import server
+from broadcaster import Broadcaster
+from light_strand import LightStrand
+from server import Server
 import Queue
 
 command_queue = Queue.Queue()
