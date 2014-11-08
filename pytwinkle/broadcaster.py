@@ -18,10 +18,12 @@ class Broadcaster:
     def __broadcast(self):
         if self.command_queue:
             while True:
-                print "Get from queue"
-                sys.stdout.flush()
-                data = self.command_queue.get()
-                print "Sending to strands."
-                sys.stdout.flush()
-                for strand in self.light_strands:
-                  strand.send(data)
+                if not self.command_queue.empty():
+                    print "Get from queue"
+                    sys.stdout.flush()
+                    data = self.command_queue.get()
+                    print "Sending to strands."
+                    sys.stdout.flush()
+                    for strand in self.light_strands:
+                        strand.send(data)
+                    self.command_queue.task_done()
