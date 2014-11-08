@@ -1,4 +1,5 @@
 import bluetooth
+import sys
 
 class LightStrand:
 
