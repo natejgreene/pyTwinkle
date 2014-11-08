@@ -23,7 +23,7 @@ class LightStrand:
 
     def send(self,command):
         try:
-            if self.connected
+            if self.connected:
                 self.socket.send(command)
         except:
             print "Error sending command."
