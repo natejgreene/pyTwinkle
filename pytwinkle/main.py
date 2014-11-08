@@ -4,7 +4,6 @@ from server import Server
 import Queue
 import time
 
-  try:
 command_queue = Queue.Queue()
 strands = LightStrand.connect_all_strands()
 
