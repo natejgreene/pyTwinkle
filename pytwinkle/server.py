@@ -30,7 +30,9 @@ class Server:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.stdout.flush()
             sys.exit(1)
-        threading.Thread(target=self.__run).start()
+        t = threading.Thread(target=self.__run)
+        t.daemon = True
+        t.start()
 
     def stop(self):
        self.stop_thread = True
