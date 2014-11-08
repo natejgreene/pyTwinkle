@@ -30,7 +30,7 @@ class LightStrand:
             if self.connected:
                 self.socket.send(command)
         except:
-            print "Error sending command."
+            print "Error sending command to ", self.address
             self.connected = false
 
     @staticmethod

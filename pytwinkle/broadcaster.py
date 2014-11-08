@@ -11,11 +11,14 @@ class Broadcaster:
         self.light_strands = light_strands
         self.command_queue = command_queue
 
-    def start():
+    def start(self):
         threading.Thread(target=self.__broadcast).start()
 
     def __broadcast(self):
         if self.command_queue:
             while True:
-                for strand in light_strands:
-                  strand.send(command_queue.get())
+                print "Get from queue"
+                data = command_queue.get()
+                print "Sending to strands."
+                for strand in self.light_strands:
+                  strand.send(data)
