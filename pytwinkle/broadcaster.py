@@ -1,4 +1,4 @@
-import queue
+import Queue
 import threading
 import light_strand
 

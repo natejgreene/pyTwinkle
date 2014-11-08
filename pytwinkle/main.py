@@ -1,7 +1,7 @@
 import broadcaster
 import light_strand
 import server
-import queue
+import Queue
 
 command_queue = Queue()
 strands = light_strand.connect_all_strands()

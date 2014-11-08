@@ -1,5 +1,5 @@
 import bluetooth
-import queue
+import Queue
 import threading
 
 class Server:
