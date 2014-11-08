@@ -43,7 +43,7 @@ class Server:
         while not self.stop_thread:
             self.client_socket, address = self.server_socket.accept()
             sys.stdout.flush()
-            while True:
+            while not self.stop_thread:
                 try:
                     self.command_queue.put(self.client_socket.recv(10))
                 except:
