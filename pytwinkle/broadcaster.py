@@ -13,7 +13,7 @@ class Broadcaster:
         self.command_queue = command_queue
 
     def start(self):
-        t = threading.Thread(target=self.__broadcast, daemon=True)
+        t = threading.Thread(target=self.__broadcast)
         t.daemon = True
         t.start()
 
