@@ -33,12 +33,12 @@ class Server:
         threading.Thread(target=self.__run).start()
 
     def stop(self):
-       stop_thread = True
+       self.stop_thread = True
 
     def __run(self):
         print "Running"
         sys.stdout.flush()
-        while not stop_thread:
+        while not self.stop_thread:
             self.client_socket, address = self.server_socket.accept()
             sys.stdout.flush()
             while True:
