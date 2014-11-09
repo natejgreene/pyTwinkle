@@ -6,7 +6,6 @@ import Queue
 import time
 import binascii
 
-
 command_queue = Queue.Queue()
 strands = LightStrand.connect_all_strands()
 
