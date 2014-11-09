@@ -7,8 +7,8 @@ class Server:
 
     server_socket = None
     client_socket = None
-
     command_queue = None
+    runnable = True
 
     def __init__(self, command_queue):
         self.command_queue = command_queue
@@ -31,15 +31,17 @@ class Server:
             sys.exit(1)
 
         t = threading.Thread(target=self.__run)
-        t.daemon = True
         t.start()
+
+    def stop(self):
+        self.runnable = False
 
     def __run(self):
         print "Running..."
         sys.stdout.flush()
-        while True:
+        while self.runnable:
             self.client_socket, address = self.server_socket.accept()
-            while True:
+            while self.runnable:
                 try:
                     self.command_queue.put(self.client_socket.recv(10))
                 except:
