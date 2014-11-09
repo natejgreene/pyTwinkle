@@ -11,7 +11,7 @@ class ProgramRunner (threading.Thread):
         self.program_method = program_method
 
     def stop(self):
-        seld.runnable = False
+        self.runnable = False
 
     def run(self):
         while self.runnable:
