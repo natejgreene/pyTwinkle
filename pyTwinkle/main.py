@@ -47,7 +47,7 @@ while True:
         if program:
             program.stop()
         if selection =='1':
-            program = ProgramRunner(candy_cane).start
+            program = ProgramRunner(candy_cane).start()
         elif selection =='s':
             pass
         elif selection =='e':
