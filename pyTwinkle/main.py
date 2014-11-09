@@ -48,6 +48,10 @@ while True:
             program.stop()
         if selection =='1':
             program = ProgramRunner(candy_cane).start()
+        elif selection =='r':
+            selection2=raw_input("Enter Raw:")
+            command = binascii.unhexlify(selection2)
+            command_queue.put(command)
         elif selection =='s':
             pass
         elif selection =='e':
