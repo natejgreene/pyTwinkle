@@ -5,13 +5,10 @@ Python application for iTwinkle lights.  Currently supports only the 36 count st
 
 Requires pybluez.
 
-Installation
-------------
-python main.py
-
 Quick Start
 ------------
 Rename your bluetooth device to begin with "00651"  It should be picked up by the Android app.
+python main.py
 
 Status
 ------
