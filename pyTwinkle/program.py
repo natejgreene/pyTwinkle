@@ -43,7 +43,7 @@ class CandyCane(LightProgram):
                 color = "0F0F0F"
                 if i % 2 == p:
                     color = "00000F"
-                for x in range(repeat_count)
+                for x in range(repeat_count):
                     command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
             self.send_command("".join(command_string))
@@ -59,7 +59,7 @@ class Scanner(LightProgram):
         for i in range(self.light_count):
 
             for j in range(width):
-                for x in range(repeat_count)
+                for x in range(repeat_count):
                     command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
 
