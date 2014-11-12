@@ -1,15 +1,14 @@
-from broadcaster import Broadcaster
-from light_strand import LightStrand
-from server import Server
-from program_runner import ProgramRunner
+from broadcaster import *
+from light_strand import *
+from server import *
+from program import *
 import Queue
-import time
 import binascii
 
 command_queue = Queue.Queue()
 strands = LightStrand.connect_all_strands()
 
-#start the server
+#start the bluetooth server
 server = Server(command_queue)
 server.start()
 
@@ -17,37 +16,17 @@ server.start()
 broadcaster = Broadcaster(strands, command_queue)
 broadcaster.start()
 
-def candy_cane():
-    for i in range(35):
-        color = "0F0F0F"
-        if i % 2:
-            color = "00000F"
-
-        command_string = "FF06{:02X}FE{}000000".format(i , color)
-        command = binascii.unhexlify(command_string)
-        command_queue.put(command)
-
-    time.sleep(.5)
-
-    for i in range(35):
-        color = "00000F"
-        if i % 2:
-            color = "0F0F0F"
-
-        command_string = "FF06{:02X}FE{}000000".format(i , color)
-        command = binascii.unhexlify(command_string)
-        command_queue.put(command)
-
-    time.sleep(.5)
-
-program = None
+p = None
 while True:
     try:
         selection=raw_input("Connect Mobile or Enter Option:")
-        if program:
-            program.stop()
+        if p is not None:
+            p.stop()
+
         if selection =='1':
-            program = ProgramRunner(candy_cane).start()
+            p = program.CandyCane(command_queue).start()
+        if selection =='2':
+            p = program.Scanner(command_queue).start()
         elif selection =='r':
             selection2=raw_input("Enter Raw:")
             command = binascii.unhexlify(selection2)

@@ -1,7 +1,7 @@
 import Queue
 import threading
 import sys
-from light_strand import LightStrand
+from light_strand import *
 
 class Broadcaster:
 
