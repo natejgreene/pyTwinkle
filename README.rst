@@ -14,7 +14,9 @@ python main.py
 Status
 ------
 I have deciphered all of the commands for these lights and am working on:
+
 HTTP server
+
 Custom patterns
 
 This is still a work in progress and PRs are welcome :)
