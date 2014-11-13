@@ -19,5 +19,5 @@ HTTP server
 
 Custom patterns
 
-This is still a work in progress and PRs are welcome :)
+This is still a work in progress and PRs are welcome :) :)
 
