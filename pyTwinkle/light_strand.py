@@ -37,7 +37,7 @@ class LightStrand:
         except:
             print "Error sending command to ", self.address
             sys.stdout.flush()
-            self.connected = false
+            self.connected = False
 
     @staticmethod
     def connect_all_strands():

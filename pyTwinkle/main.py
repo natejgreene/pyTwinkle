@@ -19,21 +19,25 @@ broadcaster.start()
 p = None
 while True:
     try:
-        selection=raw_input("Connect Mobile or Enter Option:")
+        print "1. Candy Cane"
+        print "2. Cylon"
+        print "q. Quit"
+        print 30 * "-"
+        selection=raw_input("Enter Option:")
         if p is not None:
             p.stop()
 
         if selection =='1':
-            p = program.CandyCane(command_queue).start()
-        if selection =='2':
-            p = program.Scanner(command_queue).start()
+            p = CandyCane(command_queue).start()
+        elif selection =='2':
+            p = Cylon(command_queue).start()
         elif selection =='r':
             selection2=raw_input("Enter Raw:")
             command = binascii.unhexlify(selection2)
             command_queue.put(command)
         elif selection =='s':
             pass
-        elif selection =='e':
+        elif selection =='q':
             exit(0)
 
     except (KeyboardInterrupt, SystemExit):

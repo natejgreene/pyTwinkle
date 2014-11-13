@@ -13,9 +13,9 @@ class LightProgram(threading.Thread):
         threading.Thread.__init__(self)
         self.command_queue = command_queue
         self.daemon = True
-        if self.loops is not None:
+        if loops is not None:
             self.loops = loops
-        if self.light_count is not None:
+        if light_count is not None:
             self.light_count = light_count
 
     def stop(self):
@@ -27,17 +27,17 @@ class LightProgram(threading.Thread):
     def run(self):
         while self.runnable and self.loops != 0:
             self.program()
-            self.loops -= 1
+            if self.loops > 0:
+		self.loops -= 1
 
     def send_command(self, command_string):
         command = binascii.unhexlify(command_string)
         self.command_queue.put(command)
 
-
 class CandyCane(LightProgram):
     def program(self):
         repeat_count = 3
-        for p in range(0,2)
+        for p in range(0,2):
             command_string = []
             for i in range(self.light_count):
                 color = "0F0F0F"
@@ -50,18 +50,29 @@ class CandyCane(LightProgram):
             time.sleep(.5)
 
 
-class Scanner(LightProgram):
+class Cylon(LightProgram):
+    
+    position = 0
+    direction = 1
     def program(self):
         repeat_count = 3
         width = 5
-        color = "00000F"
         command_string = []
-        for i in range(self.light_count):
-
-            for j in range(width):
-                for x in range(repeat_count):
-                    command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
-
+        for i in range(0, self.light_count):
+            if self.position != i:
+                color = "000000"
+            else:
+                color = "00000F"
+            for x in range(repeat_count):
+                command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
         self.send_command("".join(command_string))
-        time.sleep(.3)
+
+        if self.position > self.light_count:
+            self.direction = -1
+        elif self.position <= 0:
+            self.direction = 1
+
+        self.position = self.position + self.direction
+
+        time.sleep(.1)
