@@ -63,7 +63,7 @@ class Cylon(LightProgram):
                 color = "000000"
             else:
                 color = "00000F" 
-           for x in range(repeat_count):
+            for x in range(repeat_count):
                 command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
         self.send_command("".join(command_string))
