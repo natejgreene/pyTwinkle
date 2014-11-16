@@ -43,8 +43,6 @@ while True:
             selection2=raw_input("Enter Raw:")
             command = binascii.unhexlify(selection2)
             command_queue.put(command)
-        elif selection =='s':
-            pass
         elif selection =='q':
             exit(0)
 

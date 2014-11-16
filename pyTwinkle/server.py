@@ -27,17 +27,16 @@ class Server(threading.Thread):
             self.server_socket.listen(1)
             self.server_socket.settimeout(5)
             bluetooth.advertise_service(self.server_socket, "pyTwinkle", service_classes = [ bluetooth.SERIAL_PORT_CLASS ], profiles = [ bluetooth.SERIAL_PORT_PROFILE ] )
+	    super(self.__class__, self).start()
         except:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.stdout.flush()
-            sys.exit(1)
-        super(self.__class__, self).start()
 
     def stop(self):
         self.runnable = False
 
     def run(self):
-        print "Running..."
+        print "Bluetooth Server Started..."
         sys.stdout.flush()
         while self.runnable:
             try:
