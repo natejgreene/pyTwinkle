@@ -3,7 +3,7 @@ import threading
 import sys
 from light_strand import *
 
-class Broadcaster:
+class Broadcaster(threading.Thread):
 
     light_strands = None
     command_queue = None
@@ -12,15 +12,12 @@ class Broadcaster:
     def __init__(self, light_strands, command_queue):
         self.light_strands = light_strands
         self.command_queue = command_queue
-
-    def start(self):
-        t = threading.Thread(target=self.__broadcast)
-        t.start()
+        super(self.__class__, self).__init__()
 
     def stop(self):
         self.runnable = False
 
-    def __broadcast(self):
+    def run(self):
         if self.command_queue:
             while self.runnable:
                 if not self.command_queue.empty():

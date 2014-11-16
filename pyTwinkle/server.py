@@ -3,7 +3,7 @@ import Queue
 import threading
 import sys
 
-class Server:
+class Server(threading.Thread):
 
     server_socket = None
     client_socket = None
@@ -12,6 +12,7 @@ class Server:
 
     def __init__(self, command_queue):
         self.command_queue = command_queue
+        super(self.__class__, self).__init__()
 
     def __del__(self):
         if self.server_socket:
@@ -30,14 +31,12 @@ class Server:
             print >>sys.stderr, "Could not start a bluetooth server."
             sys.stdout.flush()
             sys.exit(1)
-
-        t = threading.Thread(target=self.__run)
-        t.start()
+        super(self.__class__, self).start()
 
     def stop(self):
         self.runnable = False
 
-    def __run(self):
+    def run(self):
         print "Running..."
         sys.stdout.flush()
         while self.runnable:
