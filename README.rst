@@ -11,13 +11,25 @@ Rename your bluetooth device to begin with "00651"  It should be picked up by th
 
 python main.py
 
+Protocol
+--------
+
+Single Light	0xFF	0x06	LL	DD	BB	GG	RR	??	??	??	FF
+Whole Strand	0xFF	0x28	DD	BB	GG	RR	??	??	??	??	FF
+Whole Strand Saved	0xFF	0x15	DD	BB	GG	RR	??	??	??	??	FF
+Red/White	0xFF	0x1A	??	??	??	??	??	??	??	??	FF
+
+Frames are started with 0xFF and end with 0xFF
+And Hex values for the following:
+LL = Light Id 
+DD = Brightness
+BB = Blue
+GG = Green
+RR = Red
+?? = Unknown
+
 Status
 ------
-I have deciphered all of the commands for these lights and am working on:
-
-HTTP server
-
-Custom patterns
 
 This is still a work in progress and PRs are welcome :) :)
 
