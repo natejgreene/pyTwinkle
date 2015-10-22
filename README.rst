@@ -15,17 +15,27 @@ Protocol
 --------
 
 Single Light	0xFF	0x06	LL	DD	BB	GG	RR	??	??	??	FF
+
 Whole Strand	0xFF	0x28	DD	BB	GG	RR	??	??	??	??	FF
+
 Whole Strand Saved	0xFF	0x15	DD	BB	GG	RR	??	??	??	??	FF
+
 Red/White	0xFF	0x1A	??	??	??	??	??	??	??	??	FF
 
 Frames are started with 0xFF and end with 0xFF
+
 And Hex values for the following:
+
 LL = Light Id 
+
 DD = Brightness
+
 BB = Blue
+
 GG = Green
+
 RR = Red
+
 ?? = Unknown
 
 Status
