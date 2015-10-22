@@ -14,29 +14,30 @@ python main.py
 Protocol
 --------
 
-Single Light	0xFF	0x06	LL	DD	BB	GG	RR	??	??	??	FF
+**Frame Formats:**
+  (Frames are started with 0xFF and end with 0xFF)
+  
+  Single Light	0xFF	0x06	LL	DD	BB	GG	RR	??	??	??	FF
 
-Whole Strand	0xFF	0x28	DD	BB	GG	RR	??	??	??	??	FF
+  Whole Strand	0xFF	0x28	DD	BB	GG	RR	??	??	??	??	FF
 
-Whole Strand Saved	0xFF	0x15	DD	BB	GG	RR	??	??	??	??	FF
+  Whole Strand Saved	0xFF	0x15	DD	BB	GG	RR	??	??	??	??	FF
 
-Red/White	0xFF	0x1A	??	??	??	??	??	??	??	??	FF
+  Red/White	0xFF	0x1A	??	??	??	??	??	??	??	??	FF
 
-Frames are started with 0xFF and end with 0xFF
+**Hex values for the following:**
 
-And Hex values for the following:
+  LL = Light Id 
 
-LL = Light Id 
+  DD = Brightness
 
-DD = Brightness
+  BB = Blue
 
-BB = Blue
+  GG = Green
 
-GG = Green
+  RR = Red
 
-RR = Red
-
-?? = Unknown
+  ?? = Unknown
 
 Status
 ------
