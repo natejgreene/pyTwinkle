@@ -26,8 +26,7 @@ Protocol
   Red/White	0xFF	0x1A	??	??	??	??	??	??	??	??	FF
 
 **Hex values for the following:**
-
-  LL = Light Id 
+  LL = Light Id
 
   DD = Brightness
 
