@@ -53,9 +53,10 @@ class CandyCorn(LightProgram):
     def program(self):
         repeat_count = 3
         color_list = ["000A0F","000F0F", "0F0F0F"]
+        color_list_len = len(color_list)
         command_string = []
         for i in range(self.light_count):
-            color = color_list[i % color_list.length]
+            color = color_list[i % color_list_len]
             for x in range(repeat_count):
                 command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
