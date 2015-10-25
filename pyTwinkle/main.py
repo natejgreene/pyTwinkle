@@ -28,6 +28,7 @@ while True:
     try:
         print "1. Candy Cane"
         print "2. Cylon"
+        print "3. Candy Corn"
         print "s. Stop"
         print "q. Quit"
         print 30 * "-"
@@ -37,7 +38,9 @@ while True:
             start_program('CandyCane')
         elif selection =='2':
             start_program('Cylon')
-	elif selection == 's':
+        elif selection =='3':
+            start_program('CandyCorn')
+    	elif selection == 's':
             p.stop()
         elif selection =='r':
             selection2=raw_input("Enter Raw:")

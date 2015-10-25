@@ -49,9 +49,20 @@ class CandyCane(LightProgram):
             self.send_command("".join(command_string))
             time.sleep(.5)
 
+class CandyCorn(LightProgram):
+    def program(self):
+        repeat_count = 3
+        color_list = ["000A0F","000F0F", "0F0F0F"]
+        command_string = []
+        for i in range(self.light_count):
+            color = color_list[i % color_list.length]
+            for x in range(repeat_count):
+                command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
+
+        self.send_command("".join(command_string))
 
 class Cylon(LightProgram):
-    
+
     position = 0
     direction = 1
     def program(self):
@@ -62,7 +73,7 @@ class Cylon(LightProgram):
             if self.position != i:
                 color = "000000"
             else:
-                color = "00000F" 
+                color = "00000F"
             for x in range(repeat_count):
                 command_string.append("FF06{:02X}FE{}000000FF".format(i , color))
 
